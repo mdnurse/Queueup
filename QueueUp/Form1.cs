@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1
             System.IO.TextWriter output;
 
             nick = "queueupchat";
-            pw = "oauth:mwhpwsgzsohz1ltvj9wtwnkwn0aqzq";
+            pw = "oauth:mwhpwsgzsohz1ltvj9wtwnkwn0aqzq";    //oauth is password for IRC, Dont touch it
             server = "irc.twitch.tv";
             port = 6667;
             chan = "#" + textBox1.Text.ToLower();
@@ -37,8 +37,9 @@ namespace WindowsFormsApplication1
                "PASS " + pw + "\r\n" +
                "NICK " + nick + "\r\n" +
                "USER " + nick + " 8 * :" + nick + "\r\n" +   //this is
-               "CAP REQ :twitch.tv/membership" + "\r\n " +   //the hew magic
-               "JOIN " + chan + "\r\n"
+               "CAP REQ :twitch.tv/membership" + "\r\n " +   //the new magic
+               "JOIN " + chan + "\r\n"                       //dont touch it
+                                                            //EVER!
 
             );
             output.Flush();
@@ -48,13 +49,13 @@ namespace WindowsFormsApplication1
             {
                 if (buf.Contains("PRIVMSG"))
                 {
-                    string[] split = buf.Split(new Char[] { ':' });
-                    user = split[1];
+                    string[] split = buf.Split(new Char[] { ':' });   //all the shit for cutting up the raw IRC string into easily readable text
+                    user = split[1];                                   //we need to edit this so if someone types sends a message with colons it doesnt split it again
                     string[] unamesplit = user.Split(new Char[] { '!' });
                     uname = unamesplit[0];
                     msg = split[2];
 
-                    textBox2.Invoke((Action)delegate
+                    textBox2.Invoke((Action)delegate //puts the chat into the ircbox
                     {
 
                         //int s = textBox2.Text.Length - textBox2.Height;
@@ -76,7 +77,7 @@ namespace WindowsFormsApplication1
                 }
 
 
-                //Send pong reply to any ping messages
+                //Send pong reply to any ping messages to prevent timeouts (#JustIrcThings)
                 if (buf.StartsWith("PING ")) { output.Write(buf.Replace("PING", "PONG") + "\r\n"); output.Flush(); }
                 if (buf[0] != ':') continue;
 
@@ -100,9 +101,7 @@ namespace WindowsFormsApplication1
             Thread chatthread = new Thread(ircth);
             chatthread.Start();
 
-            Uri uri = new Uri("http://twitch.tv/" + textBox1.Text + "/chat");
-
-            //set web browser here
+            Uri uri = new Uri("http://twitch.tv/" + textBox1.Text + "/chat"); //used for the embedded browser window
             webBrowser1.Url = uri;
             webBrowser1.Refresh();
         }
@@ -116,5 +115,14 @@ namespace WindowsFormsApplication1
         {
             //webBrowser1.Dock = DockStyle.Fill;
         }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e) //makes it so when you hit enter it executes the connect button
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1_Click(this, new EventArgs()); //need to fix the windows ding sound
+            }
+        }
+
     }
 }
