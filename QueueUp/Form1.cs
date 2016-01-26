@@ -57,11 +57,11 @@ namespace WindowsFormsApplication1
                     textBox2.Invoke((Action)delegate
                     {
 
-                        int s = textBox2.Text.Length - textBox2.Height;
-                        if (s < 0) s = 0;
-                        textBox2.Text = textBox2.Text.Substring(s);
-                        textBox2.Text += DateTime.Now.ToShortTimeString() + " " + uname + ": " + msg + "\n\n";
-
+                        //int s = textBox2.Text.Length - textBox2.Height;
+                        //if (s < 0) s = 0;
+                        //textBox2.Text = textBox2.Text.Substring(s);
+                        //textBox2.Text += DateTime.Now.ToShortTimeString() + " " + uname + ": " + msg + "\r\n";
+                        textBox2.AppendText(DateTime.Now.ToShortTimeString() + " " + uname + ": " + msg + "\r\n\r\n");
                         textBox2.Enabled = false;
                         textBox2.WordWrap = true;
                         textBox2.AcceptsReturn = true;
