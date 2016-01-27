@@ -13,7 +13,10 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+    
         LinkedList<string> nameList = new LinkedList<string>();
+        int count = 0;
+        
         public void ircthread()
         {
             int port;
@@ -64,7 +67,16 @@ namespace WindowsFormsApplication1
                     
                     if (msg.Contains("!join"))
                     {
-                        nameList.AddLast(user);
+                        queueGrid.Invoke((Action)delegate
+                        {
+                            DataGridViewRow row = (DataGridViewRow)queueGrid.Rows[count].Clone();
+                            queueGrid.Rows.Add(row);
+                            nameList.AddLast(uname);
+
+                            queueGrid.Rows[count].Cells[1].Value = nameList.Last();
+                            count++;
+                        });
+                       
                     }
 
                     textBox2.Invoke((Action)delegate //puts the chat into the ircbox
@@ -75,10 +87,6 @@ namespace WindowsFormsApplication1
                         //textBox2.Text = textBox2.Text.Substring(s);
                         //textBox2.Text += DateTime.Now.ToShortTimeString() + " " + uname + ": " + msg + "\r\n";
                         textBox2.AppendText(DateTime.Now.ToShortTimeString() + " " + uname + ": " + msg + "\r\n\r\n");
-                        if (flag == true)
-                        {
-                            textBox2.AppendText("spaghetti resetti");
-                        }
                         textBox2.Enabled = false;
                         textBox2.WordWrap = true;
                         textBox2.AcceptsReturn = true;
@@ -132,9 +140,19 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyCode == Keys.Enter)
             {
-                button1_Click(this, new EventArgs()); //need to fix the windows ding sound
+                button1_Click(this, new EventArgs()); //need to fix the windows ding sound  -Can "fix" mean make it loop 500 times at max volume? --
                 
             }
+        }
+
+        private void currGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void queueGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
