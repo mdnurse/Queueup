@@ -31,11 +31,19 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.queueGrid = new System.Windows.Forms.DataGridView();
+            this.currGrid = new System.Windows.Forms.DataGridView();
+            this.queueStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.queueTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.queueSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.queueGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -59,32 +67,16 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(432, 62);
+            this.textBox2.Location = new System.Drawing.Point(592, 62);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(206, 553);
             this.textBox2.TabIndex = 4;
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(222, 62);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(204, 553);
-            this.textBox3.TabIndex = 5;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(12, 62);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(204, 308);
-            this.textBox4.TabIndex = 6;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(505, 37);
+            this.label1.Location = new System.Drawing.Point(676, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 7;
@@ -93,37 +85,98 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(281, 37);
+            this.label3.Location = new System.Drawing.Point(417, 37);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Current Queue";
+            this.label3.Text = "Queue";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(86, 37);
+            this.label4.Location = new System.Drawing.Point(115, 37);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 13);
             this.label4.TabIndex = 10;
             this.label4.Text = "Current Group";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // queueGrid
+            // 
+            this.queueGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.queueGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.queueStatus,
+            this.queueTwitch,
+            this.queueSteam});
+            this.queueGrid.Location = new System.Drawing.Point(302, 62);
+            this.queueGrid.Name = "queueGrid";
+            this.queueGrid.Size = new System.Drawing.Size(284, 553);
+            this.queueGrid.TabIndex = 11;
+            this.queueGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // currGrid
+            // 
+            this.currGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.currGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.currStatus,
+            this.currTwitch,
+            this.currSteam});
+            this.currGrid.Location = new System.Drawing.Point(12, 62);
+            this.currGrid.Name = "currGrid";
+            this.currGrid.Size = new System.Drawing.Size(284, 286);
+            this.currGrid.TabIndex = 12;
+            // 
+            // queueStatus
+            // 
+            this.queueStatus.HeaderText = "Status";
+            this.queueStatus.Name = "queueStatus";
+            this.queueStatus.Width = 40;
+            // 
+            // queueTwitch
+            // 
+            this.queueTwitch.HeaderText = "Twitch Name";
+            this.queueTwitch.Name = "queueTwitch";
+            // 
+            // queueSteam
+            // 
+            this.queueSteam.HeaderText = "Steam Name";
+            this.queueSteam.Name = "queueSteam";
+            // 
+            // currStatus
+            // 
+            this.currStatus.HeaderText = "Status";
+            this.currStatus.Name = "currStatus";
+            this.currStatus.Width = 40;
+            // 
+            // currTwitch
+            // 
+            this.currTwitch.HeaderText = "Twitch Name";
+            this.currTwitch.Name = "currTwitch";
+            // 
+            // currSteam
+            // 
+            this.currSteam.HeaderText = "Steam Name";
+            this.currSteam.Name = "currSteam";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 645);
+            this.ClientSize = new System.Drawing.Size(805, 645);
+            this.Controls.Add(this.currGrid);
+            this.Controls.Add(this.queueGrid);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.queueGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,11 +187,17 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView queueGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn queueStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn queueTwitch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn queueSteam;
+        private System.Windows.Forms.DataGridView currGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currTwitch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currSteam;
     }
 }
 
