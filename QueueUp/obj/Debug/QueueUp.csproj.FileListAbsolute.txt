@@ -14,3 +14,12 @@ C:\cygwin64\home\Degenerate\QueueUp\QueueUp\obj\Debug\queueup.exe
 C:\cygwin64\home\Degenerate\QueueUp\QueueUp\obj\Debug\queueup.pdb
 C:\cygwin64\home\Degenerate\QueueUp\QueueUp\obj\Debug\QueueUp.csprojResolveAssemblyReference.cache
 C:\cygwin64\home\Degenerate\QueueUp\QueueUp\obj\Debug\WindowsFormsApplication1.Form1.resources
+D:\Programming\cygwin64\home\queueup\queue-up\QueueUp\bin\Debug\queueup.exe.config
+D:\Programming\cygwin64\home\queueup\queue-up\QueueUp\obj\Debug\queueup.exe
+D:\Programming\cygwin64\home\queueup\queue-up\QueueUp\obj\Debug\queueup.pdb
+D:\Programming\cygwin64\home\queueup\queue-up\QueueUp\bin\Debug\queueup.exe
+D:\Programming\cygwin64\home\queueup\queue-up\QueueUp\bin\Debug\queueup.pdb
+D:\Programming\cygwin64\home\queueup\queue-up\QueueUp\obj\Debug\QueueUp.csprojResolveAssemblyReference.cache
+D:\Programming\cygwin64\home\queueup\queue-up\QueueUp\obj\Debug\WindowsFormsApplication1.Form1.resources
+D:\Programming\cygwin64\home\queueup\queue-up\QueueUp\obj\Debug\queueup.Properties.Resources.resources
+D:\Programming\cygwin64\home\queueup\queue-up\QueueUp\obj\Debug\QueueUp.csproj.GenerateResource.Cache

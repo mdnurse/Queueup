@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
         {
             int port;
             string buf, nick, pw, server, chan, user, uname, msg;
+            bool flag = false;
 
             System.Net.Sockets.TcpClient sock = new System.Net.Sockets.TcpClient();
             System.IO.TextReader input;
@@ -54,6 +55,11 @@ namespace WindowsFormsApplication1
                     string[] unamesplit = user.Split(new Char[] { '!' });
                     uname = unamesplit[0];
                     msg = split[2];
+                    
+                    if (msg.Contains("!join"))
+                    {
+                        // here is where we'll add to the list, sending the username
+                    }
 
                     textBox2.Invoke((Action)delegate //puts the chat into the ircbox
                     {
@@ -63,6 +69,10 @@ namespace WindowsFormsApplication1
                         //textBox2.Text = textBox2.Text.Substring(s);
                         //textBox2.Text += DateTime.Now.ToShortTimeString() + " " + uname + ": " + msg + "\r\n";
                         textBox2.AppendText(DateTime.Now.ToShortTimeString() + " " + uname + ": " + msg + "\r\n\r\n");
+                        if (flag == true)
+                        {
+                            textBox2.AppendText("spaghetti resetti");
+                        }
                         textBox2.Enabled = false;
                         textBox2.WordWrap = true;
                         textBox2.AcceptsReturn = true;
