@@ -101,9 +101,6 @@ namespace WindowsFormsApplication1
             Thread chatthread = new Thread(ircth);
             chatthread.Start();
 
-            Uri uri = new Uri("http://twitch.tv/" + textBox1.Text + "/chat"); //used for the embedded browser window
-            webBrowser1.Url = uri;
-            webBrowser1.Refresh();
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
