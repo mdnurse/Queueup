@@ -46,6 +46,11 @@ namespace WindowsFormsApplication1
             );
             output.Flush();
 
+            textBox2.Invoke((Action)delegate
+            {
+                textBox2.AppendText(DateTime.Now.ToShortTimeString() + "Connection Established \r\n\r\n"); //this should probably be in a try catch or something...
+            });
+
             //Process each line received from irc server
             for (buf = input.ReadLine(); ; buf = input.ReadLine())
             {
@@ -111,11 +116,10 @@ namespace WindowsFormsApplication1
             ThreadStart ircth = new ThreadStart(ircthread);
             Thread chatthread = new Thread(ircth);
             chatthread.Start();
-
-        }
-
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
+            textBox2.Invoke((Action)delegate
+            {
+                textBox2.AppendText(DateTime.Now.ToShortTimeString() + "Connecting to channel: " + textBox1.Text.ToLower() + "\r\n\r\n");
+            });
 
         }
 
@@ -124,28 +128,13 @@ namespace WindowsFormsApplication1
             //webBrowser1.Dock = DockStyle.Fill;
         }
 
-        private void textBox1_KeyUp(object sender, KeyEventArgs e) //makes it so when you hit enter it executes the connect button
+        private void textBox1_KeyDown(object sender, KeyEventArgs e) //makes it so when you hit enter it executes the connect button
         {
             if (e.KeyCode == Keys.Enter)
             {
                 button1_Click(this, new EventArgs()); //need to fix the windows ding sound
+                
             }
         }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
     }
 }

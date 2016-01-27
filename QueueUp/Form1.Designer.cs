@@ -35,10 +35,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.queueGrid = new System.Windows.Forms.DataGridView();
-            this.currGrid = new System.Windows.Forms.DataGridView();
             this.queueStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.queueTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.queueSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currGrid = new System.Windows.Forms.DataGridView();
             this.currStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,7 +53,8 @@
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "Channel";
-            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            //this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // button1
             // 
@@ -90,7 +91,7 @@
             this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "Queue";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            //this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -100,7 +101,7 @@
             this.label4.Size = new System.Drawing.Size(73, 13);
             this.label4.TabIndex = 10;
             this.label4.Text = "Current Group";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            //this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // queueGrid
             // 
@@ -113,19 +114,7 @@
             this.queueGrid.Name = "queueGrid";
             this.queueGrid.Size = new System.Drawing.Size(284, 553);
             this.queueGrid.TabIndex = 11;
-            this.queueGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // currGrid
-            // 
-            this.currGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.currGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.currStatus,
-            this.currTwitch,
-            this.currSteam});
-            this.currGrid.Location = new System.Drawing.Point(12, 62);
-            this.currGrid.Name = "currGrid";
-            this.currGrid.Size = new System.Drawing.Size(284, 286);
-            this.currGrid.TabIndex = 12;
+            //this.queueGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // queueStatus
             // 
@@ -142,6 +131,18 @@
             // 
             this.queueSteam.HeaderText = "Steam Name";
             this.queueSteam.Name = "queueSteam";
+            // 
+            // currGrid
+            // 
+            this.currGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.currGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.currStatus,
+            this.currTwitch,
+            this.currSteam});
+            this.currGrid.Location = new System.Drawing.Point(12, 62);
+            this.currGrid.Name = "currGrid";
+            this.currGrid.Size = new System.Drawing.Size(284, 286);
+            this.currGrid.TabIndex = 12;
             // 
             // currStatus
             // 
