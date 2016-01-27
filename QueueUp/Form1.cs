@@ -13,6 +13,7 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+        LinkedList<string> nameList = new LinkedList<string>();
         public void ircthread()
         {
             int port;
@@ -58,7 +59,7 @@ namespace WindowsFormsApplication1
                     
                     if (msg.Contains("!join"))
                     {
-                        // here is where we'll add to the list, sending the username
+                        nameList.AddLast(user);
                     }
 
                     textBox2.Invoke((Action)delegate //puts the chat into the ircbox
