@@ -35,9 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.queueGrid = new System.Windows.Forms.DataGridView();
-            this.queueStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.queueTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.queueSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currGrid = new System.Windows.Forms.DataGridView();
             this.currStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +45,9 @@
             this.followers = new System.Windows.Forms.RadioButton();
             this.subs = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
+            this.queueStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.queueTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.queueSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.queueGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamSizeNumeric)).BeginInit();
@@ -109,6 +109,8 @@
             // 
             // queueGrid
             // 
+            this.queueGrid.AllowUserToAddRows = false;
+            this.queueGrid.AllowUserToDeleteRows = false;
             this.queueGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.queueGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.queueStatus,
@@ -119,25 +121,6 @@
             this.queueGrid.Size = new System.Drawing.Size(284, 553);
             this.queueGrid.TabIndex = 11;
             this.queueGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.queueGrid_CellContentClick);
-            // 
-            // queueStatus
-            // 
-            this.queueStatus.DataPropertyName = "status";
-            this.queueStatus.HeaderText = "Status";
-            this.queueStatus.Name = "queueStatus";
-            this.queueStatus.Width = 40;
-            // 
-            // queueTwitch
-            // 
-            this.queueTwitch.DataPropertyName = "twitchname";
-            this.queueTwitch.HeaderText = "Twitch Name";
-            this.queueTwitch.Name = "queueTwitch";
-            // 
-            // queueSteam
-            // 
-            this.queueSteam.DataPropertyName = "steamname";
-            this.queueSteam.HeaderText = "Steam Name";
-            this.queueSteam.Name = "queueSteam";
             // 
             // currGrid
             // 
@@ -228,6 +211,28 @@
             this.label5.TabIndex = 18;
             this.label5.Text = "Filters";
             // 
+            // queueStatus
+            // 
+            this.queueStatus.DataPropertyName = "status";
+            this.queueStatus.HeaderText = "Status";
+            this.queueStatus.Name = "queueStatus";
+            this.queueStatus.ReadOnly = true;
+            this.queueStatus.Width = 40;
+            // 
+            // queueTwitch
+            // 
+            this.queueTwitch.DataPropertyName = "twitchname";
+            this.queueTwitch.HeaderText = "Twitch Name";
+            this.queueTwitch.Name = "queueTwitch";
+            this.queueTwitch.ReadOnly = true;
+            // 
+            // queueSteam
+            // 
+            this.queueSteam.DataPropertyName = "steamname";
+            this.queueSteam.HeaderText = "Steam Name";
+            this.queueSteam.Name = "queueSteam";
+            this.queueSteam.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,15 +276,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn currStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn currTwitch;
         private System.Windows.Forms.DataGridViewTextBoxColumn currSteam;
-        private System.Windows.Forms.DataGridViewTextBoxColumn queueStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn queueTwitch;
-        private System.Windows.Forms.DataGridViewTextBoxColumn queueSteam;
         private System.Windows.Forms.NumericUpDown teamSizeNumeric;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton noFilter;
         private System.Windows.Forms.RadioButton followers;
         private System.Windows.Forms.RadioButton subs;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn queueStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn queueTwitch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn queueSteam;
     }
 }
 

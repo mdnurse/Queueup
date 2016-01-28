@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1
     {
     
         //LinkedList<string> nameList = new LinkedList<string>();
-        
+        BindingList<User> blank = new BindingList<User>();
         BindingList<User> nameList = new BindingList<User>();
         int count = 0;
         
@@ -135,7 +135,8 @@ namespace WindowsFormsApplication1
                                 string[] steamnamesplit = msg.Split(new Char[] { ' ' });
                                 temp.steamname = steamnamesplit[1];
                                 flag = false;
-                                queueGrid.DataSource = nameList;
+                                queueGrid.DataSource = blank; // used to fix problem of names not appearing until another action occurs
+                                queueGrid.DataSource = nameList; // rebound to display all info
                             }
                         });
                     }
