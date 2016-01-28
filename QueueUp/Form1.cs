@@ -25,6 +25,8 @@ namespace WindowsFormsApplication1
         {
             int port;
             string buf, nick, pw, server, chan, user, uname, msg;
+            bool flag = false;
+            User temp = null;
 
             System.Net.Sockets.TcpClient sock = new System.Net.Sockets.TcpClient();
             System.IO.TextReader input;
@@ -72,23 +74,70 @@ namespace WindowsFormsApplication1
                     {
                         queueGrid.Invoke((Action)delegate
                         {
-                            User newusr = new User();
-                            newusr.twitchname = uname;
-                            nameList.Add(newusr);
-                            queueGrid.DataSource = nameList;
-                            count++;
+                            foreach (User u in nameList) //checking if user is already queued.
+                            {
+                                if (u.twitchname.Contains(uname))
+                                {
+                                    temp = u;
+                                    flag = true;
+                                }
+                            }
+
+                            if (!flag)
+                            {
+                                User newusr = new User();
+                                newusr.twitchname = uname;
+                                nameList.Add(newusr);
+                                queueGrid.DataSource = nameList;
+                                count++;
+                            }
+                            flag = false;
                         });
                        
                     }
                     
                     if (msg.Contains("!leave"))
                     {
-                        //put things here
-                    }
+                        queueGrid.Invoke((Action)delegate
+                        {
+                            foreach (User u in nameList)
+                            {
+                                if (u.twitchname.Contains(uname))
+                                {
+                                    temp = u;
+                                    flag = true;                                 
+                                }
+                            }
+                            if (flag)
+                            {
+                                nameList.Remove(temp);
+                                count--;
+                                flag = false;
+                            }
+                        });
+                    } // actually functioning now
+
 
                     if (msg.Contains("!steam"))
                     {
-                        //put things here
+                        queueGrid.Invoke((Action)delegate
+                        {
+                            foreach (User u in nameList)
+                            {
+                                if (u.twitchname.Contains(uname))
+                                {
+                                    temp = u;
+                                    flag = true;
+                                }
+                            }
+                            if (flag)
+                            {
+                                string[] steamnamesplit = msg.Split(new Char[] { ' ' });
+                                temp.steamname = steamnamesplit[1];
+                                flag = false;
+                                queueGrid.DataSource = nameList;
+                            }
+                        });
                     }
 
                     if (msg.Contains("!queue"))
@@ -175,8 +224,6 @@ namespace WindowsFormsApplication1
 
         public class User // these are the users we will put inside the list
         {
-
-          
             public string twitchname { get; set; }
             public string steamname { get; set; }
             public string status { get; set; }
