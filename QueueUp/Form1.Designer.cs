@@ -35,13 +35,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.queueGrid = new System.Windows.Forms.DataGridView();
-            this.queueStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.queueTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.queueSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currGrid = new System.Windows.Forms.DataGridView();
             this.currStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.queueSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.queueTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.queueStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.queueGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currGrid)).BeginInit();
             this.SuspendLayout();
@@ -113,22 +113,6 @@
             this.queueGrid.TabIndex = 11;
             this.queueGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.queueGrid_CellContentClick);
             // 
-            // queueStatus
-            // 
-            this.queueStatus.HeaderText = "Status";
-            this.queueStatus.Name = "queueStatus";
-            this.queueStatus.Width = 40;
-            // 
-            // queueTwitch
-            // 
-            this.queueTwitch.HeaderText = "Twitch Name";
-            this.queueTwitch.Name = "queueTwitch";
-            // 
-            // queueSteam
-            // 
-            this.queueSteam.HeaderText = "Steam Name";
-            this.queueSteam.Name = "queueSteam";
-            // 
             // currGrid
             // 
             this.currGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -157,6 +141,22 @@
             // 
             this.currSteam.HeaderText = "Steam Name";
             this.currSteam.Name = "currSteam";
+            // 
+            // queueSteam
+            // 
+            this.queueSteam.HeaderText = "Steam Name";
+            this.queueSteam.Name = "queueSteam";
+            // 
+            // queueTwitch
+            // 
+            this.queueTwitch.HeaderText = "Twitch Name";
+            this.queueTwitch.Name = "queueTwitch";
+            // 
+            // queueStatus
+            // 
+            this.queueStatus.HeaderText = "Status";
+            this.queueStatus.Name = "queueStatus";
+            this.queueStatus.Width = 40;
             // 
             // Form1
             // 
@@ -190,13 +190,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView queueGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn queueStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn queueTwitch;
-        private System.Windows.Forms.DataGridViewTextBoxColumn queueSteam;
         private System.Windows.Forms.DataGridView currGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn currStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn currTwitch;
         private System.Windows.Forms.DataGridViewTextBoxColumn currSteam;
+        private System.Windows.Forms.DataGridViewTextBoxColumn queueStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn queueTwitch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn queueSteam;
     }
 }
 

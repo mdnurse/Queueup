@@ -11,33 +11,7 @@ using System.Threading;
 
 namespace WindowsFormsApplication1
 {
-    public class User // these are the users we will put inside the list
-    {
-        public User(string n)
-        {
-            name = n;
-        }
-
-        string name = null;
-        string steam = null;
-        string status = null;
-
-        public void setname(string n)
-        {
-            name = n;
-        }
-
-        public void setsteam(string s)
-        {
-            steam = s;
-        }
-
-        public void setstatus(string r)
-        {
-            status = r;
-        }
-
-    }
+   
 
     public partial class Form1 : Form
     {
@@ -99,10 +73,10 @@ namespace WindowsFormsApplication1
                     {
                         queueGrid.Invoke((Action)delegate
                         {
-
-                            queueTwitch.DataGridView.DataSource = null;
-                            nameList.Add(new User(uname));
-                            queueTwitch.DataGridView.DataSource = nameList;
+                            User newusr = new User();
+                            newusr.name = uname;
+                            nameList.Add(newusr);
+                            queueGrid.DataSource = nameList;
                             count++;
                         });
                        
@@ -182,6 +156,17 @@ namespace WindowsFormsApplication1
         private void queueGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        public class User // these are the users we will put inside the list
+        {
+
+            [DisplayName("Twitch Name")]
+            public string name { get; set; }
+            [DisplayName("Steam Name")]
+            public string steam { get; set; }
+            [DisplayName("Status")]
+            public string status { get; set; }
         }
     }
 }

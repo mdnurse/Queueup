@@ -22,4 +22,4 @@ D:\Programming\cygwin64\home\queueup\queue-up\QueueUp\bin\Debug\queueup.pdb
 D:\Programming\cygwin64\home\queueup\queue-up\QueueUp\obj\Debug\QueueUp.csprojResolveAssemblyReference.cache
 D:\Programming\cygwin64\home\queueup\queue-up\QueueUp\obj\Debug\queueup.Properties.Resources.resources
 D:\Programming\cygwin64\home\queueup\queue-up\QueueUp\obj\Debug\QueueUp.csproj.GenerateResource.Cache
-D:\Programming\cygwin64\home\queueup\queue-up\QueueUp\obj\Debug\WindowsFormsApplication1.User.resources
+D:\Programming\cygwin64\home\queueup\queue-up\QueueUp\obj\Debug\WindowsFormsApplication1.Form1.resources
