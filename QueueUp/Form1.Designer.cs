@@ -35,15 +35,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.queueGrid = new System.Windows.Forms.DataGridView();
+            this.queueStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.queueTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.queueSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currGrid = new System.Windows.Forms.DataGridView();
             this.currStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.queueStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.queueTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.queueSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.teamSizeNumeric = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.noFilter = new System.Windows.Forms.RadioButton();
+            this.followers = new System.Windows.Forms.RadioButton();
+            this.subs = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.queueGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamSizeNumeric)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -113,6 +120,25 @@
             this.queueGrid.TabIndex = 11;
             this.queueGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.queueGrid_CellContentClick);
             // 
+            // queueStatus
+            // 
+            this.queueStatus.DataPropertyName = "status";
+            this.queueStatus.HeaderText = "Status";
+            this.queueStatus.Name = "queueStatus";
+            this.queueStatus.Width = 40;
+            // 
+            // queueTwitch
+            // 
+            this.queueTwitch.DataPropertyName = "twitchname";
+            this.queueTwitch.HeaderText = "Twitch Name";
+            this.queueTwitch.Name = "queueTwitch";
+            // 
+            // queueSteam
+            // 
+            this.queueSteam.DataPropertyName = "steamname";
+            this.queueSteam.HeaderText = "Steam Name";
+            this.queueSteam.Name = "queueSteam";
+            // 
             // currGrid
             // 
             this.currGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -142,30 +168,77 @@
             this.currSteam.HeaderText = "Steam Name";
             this.currSteam.Name = "currSteam";
             // 
-            // queueStatus
+            // teamSizeNumeric
             // 
-            this.queueStatus.DataPropertyName = "status";
-            this.queueStatus.HeaderText = "Status";
-            this.queueStatus.Name = "queueStatus";
-            this.queueStatus.Width = 40;
+            this.teamSizeNumeric.Location = new System.Drawing.Point(257, 354);
+            this.teamSizeNumeric.Name = "teamSizeNumeric";
+            this.teamSizeNumeric.Size = new System.Drawing.Size(39, 20);
+            this.teamSizeNumeric.TabIndex = 13;
             // 
-            // queueTwitch
+            // label2
             // 
-            this.queueTwitch.DataPropertyName = "twitchname";
-            this.queueTwitch.HeaderText = "Twitch Name";
-            this.queueTwitch.Name = "queueTwitch";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(185, 356);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Team Size";
             // 
-            // queueSteam
+            // noFilter
             // 
-            this.queueSteam.DataPropertyName = "steamname";
-            this.queueSteam.HeaderText = "Steam Name";
-            this.queueSteam.Name = "queueSteam";
+            this.noFilter.AutoSize = true;
+            this.noFilter.Location = new System.Drawing.Point(211, 415);
+            this.noFilter.Name = "noFilter";
+            this.noFilter.Size = new System.Drawing.Size(51, 17);
+            this.noFilter.TabIndex = 15;
+            this.noFilter.TabStop = true;
+            this.noFilter.Text = "None";
+            this.noFilter.UseVisualStyleBackColor = true;
+            // 
+            // followers
+            // 
+            this.followers.AutoSize = true;
+            this.followers.Location = new System.Drawing.Point(211, 438);
+            this.followers.Name = "followers";
+            this.followers.Size = new System.Drawing.Size(69, 17);
+            this.followers.TabIndex = 16;
+            this.followers.TabStop = true;
+            this.followers.Text = "Followers";
+            this.followers.UseVisualStyleBackColor = true;
+            // 
+            // subs
+            // 
+            this.subs.AutoSize = true;
+            this.subs.Location = new System.Drawing.Point(211, 461);
+            this.subs.Name = "subs";
+            this.subs.Size = new System.Drawing.Size(80, 17);
+            this.subs.TabIndex = 17;
+            this.subs.TabStop = true;
+            this.subs.Text = "Subscribers";
+            this.subs.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(237, 399);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Filters";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 645);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.subs);
+            this.Controls.Add(this.followers);
+            this.Controls.Add(this.noFilter);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.teamSizeNumeric);
             this.Controls.Add(this.currGrid);
             this.Controls.Add(this.queueGrid);
             this.Controls.Add(this.label4);
@@ -179,6 +252,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.queueGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.currGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamSizeNumeric)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,6 +274,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn queueStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn queueTwitch;
         private System.Windows.Forms.DataGridViewTextBoxColumn queueSteam;
+        private System.Windows.Forms.NumericUpDown teamSizeNumeric;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RadioButton noFilter;
+        private System.Windows.Forms.RadioButton followers;
+        private System.Windows.Forms.RadioButton subs;
+        private System.Windows.Forms.Label label5;
     }
 }
 

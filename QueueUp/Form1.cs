@@ -80,6 +80,21 @@ namespace WindowsFormsApplication1
                         });
                        
                     }
+                    
+                    if (msg.Contains("!leave"))
+                    {
+                        //put things here
+                    }
+
+                    if (msg.Contains("!steam"))
+                    {
+                        //put things here
+                    }
+
+                    if (msg.Contains("!queue"))
+                    {
+                        //put things here
+                    }
 
                     textBox2.Invoke((Action)delegate //puts the chat into the ircbox
                     {
@@ -136,6 +151,7 @@ namespace WindowsFormsApplication1
         private void Form1_Load(object sender, EventArgs e)
         {
             //webBrowser1.Dock = DockStyle.Fill;
+            noFilter.Checked = true;
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e) //makes it so when you hit enter it executes the connect button
