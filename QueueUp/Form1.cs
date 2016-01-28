@@ -25,7 +25,6 @@ namespace WindowsFormsApplication1
         {
             int port;
             string buf, nick, pw, server, chan, user, uname, msg;
-            bool flag = false;
 
             System.Net.Sockets.TcpClient sock = new System.Net.Sockets.TcpClient();
             System.IO.TextReader input;
@@ -74,7 +73,7 @@ namespace WindowsFormsApplication1
                         queueGrid.Invoke((Action)delegate
                         {
                             User newusr = new User();
-                            newusr.name = uname;
+                            newusr.twitchname = uname;
                             nameList.Add(newusr);
                             queueGrid.DataSource = nameList;
                             count++;
@@ -161,11 +160,9 @@ namespace WindowsFormsApplication1
         public class User // these are the users we will put inside the list
         {
 
-            [DisplayName("Twitch Name")]
-            public string name { get; set; }
-            [DisplayName("Steam Name")]
-            public string steam { get; set; }
-            [DisplayName("Status")]
+          
+            public string twitchname { get; set; }
+            public string steamname { get; set; }
             public string status { get; set; }
         }
     }

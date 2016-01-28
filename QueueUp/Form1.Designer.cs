@@ -39,9 +39,9 @@
             this.currStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.queueSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.queueTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.queueStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.queueTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.queueSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.queueGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currGrid)).BeginInit();
             this.SuspendLayout();
@@ -142,21 +142,24 @@
             this.currSteam.HeaderText = "Steam Name";
             this.currSteam.Name = "currSteam";
             // 
-            // queueSteam
-            // 
-            this.queueSteam.HeaderText = "Steam Name";
-            this.queueSteam.Name = "queueSteam";
-            // 
-            // queueTwitch
-            // 
-            this.queueTwitch.HeaderText = "Twitch Name";
-            this.queueTwitch.Name = "queueTwitch";
-            // 
             // queueStatus
             // 
+            this.queueStatus.DataPropertyName = "status";
             this.queueStatus.HeaderText = "Status";
             this.queueStatus.Name = "queueStatus";
             this.queueStatus.Width = 40;
+            // 
+            // queueTwitch
+            // 
+            this.queueTwitch.DataPropertyName = "twitchname";
+            this.queueTwitch.HeaderText = "Twitch Name";
+            this.queueTwitch.Name = "queueTwitch";
+            // 
+            // queueSteam
+            // 
+            this.queueSteam.DataPropertyName = "steamname";
+            this.queueSteam.HeaderText = "Steam Name";
+            this.queueSteam.Name = "queueSteam";
             // 
             // Form1
             // 
