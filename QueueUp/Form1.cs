@@ -14,7 +14,9 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
     
-        LinkedList<string> nameList = new LinkedList<string>();
+        //LinkedList<string> nameList = new LinkedList<string>();
+        
+        BindingList<string> nameList = new BindingList<string>();
         int count = 0;
         
         public void ircthread()
@@ -69,11 +71,10 @@ namespace WindowsFormsApplication1
                     {
                         queueGrid.Invoke((Action)delegate
                         {
-                            DataGridViewRow row = (DataGridViewRow)queueGrid.Rows[count].Clone();
-                            queueGrid.Rows.Add(row);
-                            nameList.AddLast(uname);
 
-                            queueGrid.Rows[count].Cells[1].Value = nameList.Last();
+                            queueTwitch.DataGridView.DataSource = null;
+                            nameList.Add(uname);
+                            queueTwitch.DataGridView.DataSource = nameList;
                             count++;
                         });
                        
