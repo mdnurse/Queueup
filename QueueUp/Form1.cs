@@ -11,12 +11,40 @@ using System.Threading;
 
 namespace WindowsFormsApplication1
 {
+    public class User // these are the users we will put inside the list
+    {
+        public User(string n)
+        {
+            name = n;
+        }
+
+        string name = null;
+        string steam = null;
+        string status = null;
+
+        public void setname(string n)
+        {
+            name = n;
+        }
+
+        public void setsteam(string s)
+        {
+            steam = s;
+        }
+
+        public void setstatus(string r)
+        {
+            status = r;
+        }
+
+    }
+
     public partial class Form1 : Form
     {
     
         //LinkedList<string> nameList = new LinkedList<string>();
         
-        BindingList<string> nameList = new BindingList<string>();
+        BindingList<User> nameList = new BindingList<User>();
         int count = 0;
         
         public void ircthread()
@@ -73,7 +101,7 @@ namespace WindowsFormsApplication1
                         {
 
                             queueTwitch.DataGridView.DataSource = null;
-                            nameList.Add(uname);
+                            nameList.Add(new User(uname));
                             queueTwitch.DataGridView.DataSource = nameList;
                             count++;
                         });
