@@ -80,6 +80,8 @@ namespace WindowsFormsApplication1
                                 {
                                     temp = u;
                                     flag = true;
+                                    output.Write("PRIVMSG " + chan + " :@" + uname + " You are already in queue\r\n");
+                                    output.Flush();
                                 }
                             }
 
