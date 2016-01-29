@@ -19,8 +19,11 @@ namespace WindowsFormsApplication1
         //LinkedList<string> nameList = new LinkedList<string>();
         BindingList<User> blank = new BindingList<User>();
         BindingList<User> nameList = new BindingList<User>();
+        BindingList<User> currentgroup = new BindingList<User>();
         int count = 0;
-        
+        int groupcount = 0;
+        int groupmax = 5; //temp until we make it variable
+
         public void ircthread()
         {
             int port;
@@ -193,6 +196,52 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+
+            currGrid.Invoke((Action)delegate
+            {
+
+                
+                if (currentgroup.Count > 0)
+                {
+                    for (int i = 0; i < currentgroup.Count; i++)
+                    {
+                        currentgroup.RemoveAt(0);
+                        groupcount--;
+                    }
+                }
+
+            });
+            
+            queueGrid.Invoke((Action)delegate
+            {
+                foreach (User u in nameList)
+                {
+                    currentgroup.Add(u);
+                    groupcount++;
+
+                    if (groupcount > groupmax)
+                    {
+                        break;
+                    }
+                }
+ 
+                for (int i = 0; i < groupcount; i++)
+                {
+                    nameList.RemoveAt(0);
+                }
+            });
+
+            currGrid.Invoke((Action)delegate
+            {
+                currGrid.DataSource = currentgroup;
+            });
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {

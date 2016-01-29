@@ -35,19 +35,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.queueGrid = new System.Windows.Forms.DataGridView();
+            this.queueStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.queueTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.queueSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currGrid = new System.Windows.Forms.DataGridView();
-            this.currStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teamSizeNumeric = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.noFilter = new System.Windows.Forms.RadioButton();
             this.followers = new System.Windows.Forms.RadioButton();
             this.subs = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
-            this.queueStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.queueTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.queueSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
+            this.currStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.queueGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamSizeNumeric)).BeginInit();
@@ -122,6 +123,28 @@
             this.queueGrid.TabIndex = 11;
             this.queueGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.queueGrid_CellContentClick);
             // 
+            // queueStatus
+            // 
+            this.queueStatus.DataPropertyName = "status";
+            this.queueStatus.HeaderText = "Status";
+            this.queueStatus.Name = "queueStatus";
+            this.queueStatus.ReadOnly = true;
+            this.queueStatus.Width = 40;
+            // 
+            // queueTwitch
+            // 
+            this.queueTwitch.DataPropertyName = "twitchname";
+            this.queueTwitch.HeaderText = "Twitch Name";
+            this.queueTwitch.Name = "queueTwitch";
+            this.queueTwitch.ReadOnly = true;
+            // 
+            // queueSteam
+            // 
+            this.queueSteam.DataPropertyName = "steamname";
+            this.queueSteam.HeaderText = "Steam Name";
+            this.queueSteam.Name = "queueSteam";
+            this.queueSteam.ReadOnly = true;
+            // 
             // currGrid
             // 
             this.currGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -134,22 +157,6 @@
             this.currGrid.Size = new System.Drawing.Size(284, 286);
             this.currGrid.TabIndex = 12;
             this.currGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.currGrid_CellContentClick);
-            // 
-            // currStatus
-            // 
-            this.currStatus.HeaderText = "Status";
-            this.currStatus.Name = "currStatus";
-            this.currStatus.Width = 40;
-            // 
-            // currTwitch
-            // 
-            this.currTwitch.HeaderText = "Twitch Name";
-            this.currTwitch.Name = "currTwitch";
-            // 
-            // currSteam
-            // 
-            this.currSteam.HeaderText = "Steam Name";
-            this.currSteam.Name = "currSteam";
             // 
             // teamSizeNumeric
             // 
@@ -211,33 +218,41 @@
             this.label5.TabIndex = 18;
             this.label5.Text = "Filters";
             // 
-            // queueStatus
+            // button2
             // 
-            this.queueStatus.DataPropertyName = "status";
-            this.queueStatus.HeaderText = "Status";
-            this.queueStatus.Name = "queueStatus";
-            this.queueStatus.ReadOnly = true;
-            this.queueStatus.Width = 40;
+            this.button2.Location = new System.Drawing.Point(12, 356);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(176, 36);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Queue Group";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // queueTwitch
+            // currStatus
             // 
-            this.queueTwitch.DataPropertyName = "twitchname";
-            this.queueTwitch.HeaderText = "Twitch Name";
-            this.queueTwitch.Name = "queueTwitch";
-            this.queueTwitch.ReadOnly = true;
+            this.currStatus.DataPropertyName = "status";
+            this.currStatus.HeaderText = "Status";
+            this.currStatus.Name = "currStatus";
+            this.currStatus.Width = 40;
             // 
-            // queueSteam
+            // currTwitch
             // 
-            this.queueSteam.DataPropertyName = "steamname";
-            this.queueSteam.HeaderText = "Steam Name";
-            this.queueSteam.Name = "queueSteam";
-            this.queueSteam.ReadOnly = true;
+            this.currTwitch.DataPropertyName = "twitchname";
+            this.currTwitch.HeaderText = "Twitch Name";
+            this.currTwitch.Name = "currTwitch";
+            // 
+            // currSteam
+            // 
+            this.currSteam.DataPropertyName = "steamname";
+            this.currSteam.HeaderText = "Steam Name";
+            this.currSteam.Name = "currSteam";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 645);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.subs);
             this.Controls.Add(this.followers);
@@ -273,9 +288,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView queueGrid;
         private System.Windows.Forms.DataGridView currGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn currStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn currTwitch;
-        private System.Windows.Forms.DataGridViewTextBoxColumn currSteam;
         private System.Windows.Forms.NumericUpDown teamSizeNumeric;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton noFilter;
@@ -285,6 +297,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn queueStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn queueTwitch;
         private System.Windows.Forms.DataGridViewTextBoxColumn queueSteam;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currTwitch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currSteam;
     }
 }
 
