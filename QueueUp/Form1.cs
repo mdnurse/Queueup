@@ -24,7 +24,7 @@ namespace WindowsFormsApplication1
         public void ircthread()
         {
             int port;
-            string buf, nick, pw, server, chan, user, uname, msg;
+            string buf, nick, pw, server, chan, user, uname, msg, queueList;
             bool flag = false;
             User temp = null;
 
@@ -143,7 +143,13 @@ namespace WindowsFormsApplication1
 
                     if (msg.Contains("!queue"))
                     {
-                        //put things here
+                        queueList = "";
+                        foreach (User u in nameList)
+                        {
+                            queueList += " @" + u.twitchname  + ",";
+                        }
+                        output.Write("PRIVMSG " + chan + " :CURRENT QUEUE: " + queueList + "\r\n");
+                        output.Flush();
                     }
 
                     textBox2.Invoke((Action)delegate //puts the chat into the ircbox
