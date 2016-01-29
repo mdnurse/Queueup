@@ -205,15 +205,7 @@ namespace WindowsFormsApplication1
             currGrid.Invoke((Action)delegate
             {
 
-                
-                if (currentgroup.Count > 0)
-                {
-                    for (int i = 0; i < temp; i++)
-                    {
-                        currentgroup.RemoveAt(0);
-                        groupcount--;
-                    }
-                }
+                currentgroup = new BindingList<User>();
 
             });
             
