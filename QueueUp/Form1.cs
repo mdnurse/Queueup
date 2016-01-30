@@ -73,13 +73,13 @@ namespace WindowsFormsApplication1
                     uname = unamesplit[0];
                     msg = split[2];
                     
-                    if (msg.Contains("!join"))
+                    if (msg.Equals("!join", StringComparison.Ordinal))
                     {
                         queueGrid.Invoke((Action)delegate
                         {
                             foreach (User u in nameList) //checking if user is already queued.
                             {
-                                if (u.twitchname.Contains(uname))
+                                if (u.twitchname.Equals(uname, StringComparison.Ordinal))
                                 {
                                     temp = u;
                                     flag = true;
@@ -100,14 +100,14 @@ namespace WindowsFormsApplication1
                         });
                        
                     }
-                    
-                    if (msg.Contains("!leave"))
+
+                    if (msg.Equals("!leave", StringComparison.Ordinal))
                     {
                         queueGrid.Invoke((Action)delegate
                         {
                             foreach (User u in nameList)
                             {
-                                if (u.twitchname.Contains(uname))
+                                if (u.twitchname.Equals(uname, StringComparison.Ordinal))
                                 {
                                     temp = u;
                                     flag = true;                                 
@@ -122,14 +122,14 @@ namespace WindowsFormsApplication1
                         });
                     } // actually functioning now
 
-
-                    if (msg.Contains("!steam"))
+                    string[] steamnamesplit = msg.Split(new Char[] { ' ' });
+                    if (steamnamesplit[0].Equals("!steam", StringComparison.Ordinal))
                     {
                         queueGrid.Invoke((Action)delegate
                         {
                             foreach (User u in nameList)
                             {
-                                if (u.twitchname.Contains(uname))
+                                if (u.twitchname.Equals(uname, StringComparison.Ordinal))
                                 {
                                     temp = u;
                                     flag = true;
@@ -137,7 +137,6 @@ namespace WindowsFormsApplication1
                             }
                             if (flag)
                             {
-                                string[] steamnamesplit = msg.Split(new Char[] { ' ' });
                                 temp.steamname = steamnamesplit[1];
                                 flag = false;
                                 queueGrid.DataSource = blank; // used to fix problem of names not appearing until another action occurs
@@ -146,7 +145,7 @@ namespace WindowsFormsApplication1
                         });
                     }
 
-                    if (msg.Contains("!queue"))
+                    if (msg.Equals("!queue",StringComparison.Ordinal))
                     {
                         queueList = "";
                         foreach (User u in nameList)
