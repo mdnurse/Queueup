@@ -352,44 +352,38 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e) // generate a random queue :O
         {
-            int[] indices;
-            indices = new int[groupmax];
             Random r = new Random();
             int temp = 0;
-            
+            int rand = 0;
             currGrid.Invoke((Action)delegate
             {
+
                 if (groupcount >= groupmax)
                 {
                     currentgroup = new BindingList<User>();
                     groupcount = 0;
- 
-
-                }
-
-                for (int i = 0; i < groupmax - groupcount; i++)
+                } 
+                else
                 {
-                    int rand = r.Next(0, groupmax - 1);
-                    currentgroup.Add(nameList[rand]);
-                    indices[i] = rand;
-                    temp++;
+                    temp = groupcount;
                 }
-                groupcount = groupcount + temp;
+
+                for (int i = temp; i < groupmax; i++)
+                {
+                    if (count == 0) break;
+                    rand = r.Next(0, count - 1);
+                    currentgroup.Add(nameList[rand]);
+                    groupcount++;
+                    queueGrid.Invoke((Action)delegate
+                    {
+                        nameList.RemoveAt(rand);
+                        count--;
+                        queueGrid.DataSource = nameList;
+                    });
+                }
+
                 currGrid.DataSource = currentgroup;
             });
-
-            queueGrid.Invoke((Action)delegate
-            {
-                Array.Sort(indices);
-
-                for (int i = temp; i > 0; i++)
-                {
-                    nameList.RemoveAt(indices[i]);
-                }
-                count = count - temp;
-                queueGrid.DataSource = nameList;
-            });
-
         }
     }
 }
