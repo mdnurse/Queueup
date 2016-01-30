@@ -380,7 +380,9 @@ namespace WindowsFormsApplication1
 
             queueGrid.Invoke((Action)delegate
             {
-                for (int i = 0; i < temp; i++)
+                Array.Sort(indices);
+
+                for (int i = temp; i > 0; i++)
                 {
                     nameList.RemoveAt(indices[i]);
                 }
