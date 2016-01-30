@@ -39,6 +39,9 @@
             this.queueTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.queueSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currGrid = new System.Windows.Forms.DataGridView();
+            this.currStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teamSizeNumeric = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.noFilter = new System.Windows.Forms.RadioButton();
@@ -46,9 +49,8 @@
             this.subs = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.currStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currTwitch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currSteam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.queueGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamSizeNumeric)).BeginInit();
@@ -147,6 +149,8 @@
             // 
             // currGrid
             // 
+            this.currGrid.AllowUserToAddRows = false;
+            this.currGrid.AllowUserToDeleteRows = false;
             this.currGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.currGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.currStatus,
@@ -157,6 +161,25 @@
             this.currGrid.Size = new System.Drawing.Size(284, 286);
             this.currGrid.TabIndex = 12;
             this.currGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.currGrid_CellContentClick);
+            // 
+            // currStatus
+            // 
+            this.currStatus.DataPropertyName = "status";
+            this.currStatus.HeaderText = "Status";
+            this.currStatus.Name = "currStatus";
+            this.currStatus.Width = 40;
+            // 
+            // currTwitch
+            // 
+            this.currTwitch.DataPropertyName = "twitchname";
+            this.currTwitch.HeaderText = "Twitch Name";
+            this.currTwitch.Name = "currTwitch";
+            // 
+            // currSteam
+            // 
+            this.currSteam.DataPropertyName = "steamname";
+            this.currSteam.HeaderText = "Steam Name";
+            this.currSteam.Name = "currSteam";
             // 
             // teamSizeNumeric
             // 
@@ -231,30 +254,33 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // currStatus
+            // button3
             // 
-            this.currStatus.DataPropertyName = "status";
-            this.currStatus.HeaderText = "Status";
-            this.currStatus.Name = "currStatus";
-            this.currStatus.Width = 40;
+            this.button3.Location = new System.Drawing.Point(12, 394);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(86, 38);
+            this.button3.TabIndex = 20;
+            this.button3.Text = "Remove User From Group";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // currTwitch
+            // button4
             // 
-            this.currTwitch.DataPropertyName = "twitchname";
-            this.currTwitch.HeaderText = "Twitch Name";
-            this.currTwitch.Name = "currTwitch";
-            // 
-            // currSteam
-            // 
-            this.currSteam.DataPropertyName = "steamname";
-            this.currSteam.HeaderText = "Steam Name";
-            this.currSteam.Name = "currSteam";
+            this.button4.Location = new System.Drawing.Point(102, 394);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(86, 38);
+            this.button4.TabIndex = 21;
+            this.button4.Text = "Remove User From Queue";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 645);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.subs);
@@ -304,6 +330,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn currStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn currTwitch;
         private System.Windows.Forms.DataGridViewTextBoxColumn currSteam;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
 

@@ -23,6 +23,7 @@ namespace WindowsFormsApplication1
         int count = 0;
         int groupcount = 0;
         int groupmax = 0; //temp until we make it variable
+        bool connected = false;
 
         public void ircthread()
         {
@@ -245,14 +246,17 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ThreadStart ircth = new ThreadStart(ircthread);
-            Thread chatthread = new Thread(ircth);
-            chatthread.Start();
-            textBox2.Invoke((Action)delegate
+            if (!connected)
             {
-                textBox2.AppendText(DateTime.Now.ToShortTimeString() + "Connecting to channel: " + textBox1.Text.ToLower() + "\r\n\r\n");
-            });
-
+                ThreadStart ircth = new ThreadStart(ircthread);
+                Thread chatthread = new Thread(ircth);
+                chatthread.Start();
+                textBox2.Invoke((Action)delegate
+                {
+                    textBox2.AppendText(DateTime.Now.ToShortTimeString() + "Connecting to channel: " + textBox1.Text.ToLower() + "\r\n\r\n");
+                });
+                connected = true;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -263,6 +267,8 @@ namespace WindowsFormsApplication1
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e) //makes it so when you hit enter it executes the connect button
         {
+            
+            
             if (e.KeyCode == Keys.Enter)
             {
                 button1_Click(this, new EventArgs()); //need to fix the windows ding sound  -Can "fix" mean make it loop 500 times at max volume? --
@@ -290,7 +296,38 @@ namespace WindowsFormsApplication1
         private void teamSizeNumeric_ValueChanged(object sender, EventArgs e)
         {
             groupmax = (int)teamSizeNumeric.Value;
-            Console.WriteLine("%d", groupmax);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int removeindex;
+            currGrid.Invoke((Action)delegate
+            {
+                if (groupcount > 0)
+                {
+                    removeindex = currGrid.CurrentCell.RowIndex;
+                    currentgroup.RemoveAt(removeindex);
+                    groupcount--;
+                    button1_Click(this, new EventArgs());
+                    
+                }
+            });
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int removeindex;
+            queueGrid.Invoke((Action)delegate
+            {
+                if (count > 0)
+                {
+                    removeindex = queueGrid.CurrentCell.RowIndex;
+                    nameList.RemoveAt(removeindex);
+                    queueGrid.DataSource = blank; // used to fix problem of names not appearing until another action occurs
+                    queueGrid.DataSource = nameList; // rebound to display all info
+                    count--;
+                }
+            });
         }
     }
 }
