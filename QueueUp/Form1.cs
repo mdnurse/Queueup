@@ -144,6 +144,25 @@ namespace WindowsFormsApplication1
                                 queueGrid.DataSource = nameList; // rebound to display all info
                             }
                         });
+
+                        currGrid.Invoke((Action)delegate
+                        {
+                            foreach (User u in currentgroup)
+                            {
+                                if (u.twitchname.Equals(uname, StringComparison.Ordinal))
+                                {
+                                    temp = u;
+                                    flag = true;
+                                }
+                            }
+                            if (flag)
+                            {
+                                temp.steamname = steamnamesplit[1];
+                                flag = false;
+                                currGrid.DataSource = blank; // used to fix problem of names not appearing until another action occurs
+                                currGrid.DataSource = currentgroup; // rebound to display all info
+                            }
+                        });
                     }
 
                     if (msg.Equals("!queue",StringComparison.Ordinal))
@@ -217,6 +236,7 @@ namespace WindowsFormsApplication1
             {
                 foreach (User u in nameList)
                 {
+                    if (groupmax == 0) break;
                     currentgroup.Add(u);
                     groupcount++;
 
@@ -328,6 +348,11 @@ namespace WindowsFormsApplication1
                     count--;
                 }
             });
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

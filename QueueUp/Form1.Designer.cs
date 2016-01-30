@@ -51,6 +51,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.queueGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamSizeNumeric)).BeginInit();
@@ -256,7 +257,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 394);
+            this.button3.Location = new System.Drawing.Point(12, 436);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(86, 38);
             this.button3.TabIndex = 20;
@@ -266,7 +267,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(102, 394);
+            this.button4.Location = new System.Drawing.Point(102, 436);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(86, 38);
             this.button4.TabIndex = 21;
@@ -274,11 +275,22 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(12, 396);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(176, 36);
+            this.button5.TabIndex = 22;
+            this.button5.Text = "Random Queue";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 645);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -332,6 +344,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn currSteam;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
 
