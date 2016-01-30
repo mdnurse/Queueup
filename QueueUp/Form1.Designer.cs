@@ -160,10 +160,13 @@
             // 
             // teamSizeNumeric
             // 
+            this.teamSizeNumeric.AccessibleDescription = "";
+            this.teamSizeNumeric.AccessibleName = "";
             this.teamSizeNumeric.Location = new System.Drawing.Point(257, 354);
             this.teamSizeNumeric.Name = "teamSizeNumeric";
             this.teamSizeNumeric.Size = new System.Drawing.Size(39, 20);
             this.teamSizeNumeric.TabIndex = 13;
+            this.teamSizeNumeric.ValueChanged += new System.EventHandler(this.teamSizeNumeric_ValueChanged);
             // 
             // label2
             // 

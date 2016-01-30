@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1
         BindingList<User> currentgroup = new BindingList<User>();
         int count = 0;
         int groupcount = 0;
-        int groupmax = 5; //temp until we make it variable
+        int groupmax = 0; //temp until we make it variable
 
         public void ircthread()
         {
@@ -199,13 +199,17 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            bool flag = false;
             int temp = groupcount;
-
             currGrid.Invoke((Action)delegate
             {
-
-                currentgroup = new BindingList<User>();
-
+                if (groupcount >= groupmax)
+                {
+                    currentgroup = new BindingList<User>();
+                    groupcount = 0;
+                    flag = true;
+                   
+                }
             });
             
             queueGrid.Invoke((Action)delegate
@@ -220,16 +224,21 @@ namespace WindowsFormsApplication1
                         break;
                     }
                 }
- 
-                for (int i = 0; i < groupcount; i++)
-                {
-                    nameList.RemoveAt(0);
-                }
+              
+                    for (int i = 0; i < groupcount; i++)
+                    {
+                        if(count == 0) break;
+                        nameList.RemoveAt(0);
+                        count--;
+                    }
+
             });
 
             currGrid.Invoke((Action)delegate
             {
-                currGrid.DataSource = currentgroup;
+                
+                    currGrid.DataSource = currentgroup;
+                
             });
         }
 
@@ -276,6 +285,12 @@ namespace WindowsFormsApplication1
             public string twitchname { get; set; }
             public string steamname { get; set; }
             public string status { get; set; }
+        }
+
+        private void teamSizeNumeric_ValueChanged(object sender, EventArgs e)
+        {
+            groupmax = (int)teamSizeNumeric.Value;
+            Console.WriteLine("%d", groupmax);
         }
     }
 }
