@@ -96,6 +96,8 @@ namespace WindowsFormsApplication1
                                 nameList.Add(newusr);
                                 queueGrid.DataSource = nameList;
                                 count++;
+                                output.Write("PRIVMSG " + chan + " :@" + uname + " Has successfully joined the queue!\r\n");
+                                output.Flush(); //does not work everytime, works 1st instance or if !queue is called but not others. LOW PRIORITY
                             }
                             flag = false;
                         });
@@ -119,6 +121,8 @@ namespace WindowsFormsApplication1
                                 nameList.Remove(temp);
                                 count--;
                                 flag = false;
+                                output.Write("PRIVMSG " + chan + " :@" + uname + " You have successfully left the queue!\r\n");
+                                output.Flush(); //does not work everytime, works 1st instance or if !queue is called but not others. LOW PRIORITY
                             }
                         });
                     } // actually functioning now
@@ -126,6 +130,7 @@ namespace WindowsFormsApplication1
                     string[] steamnamesplit = msg.Split(new Char[] { ' ' });
                     if (steamnamesplit[0].Equals("!steam", StringComparison.Ordinal))
                     {
+                        flag = false;
                         queueGrid.Invoke((Action)delegate
                         {
                             foreach (User u in nameList)
@@ -138,10 +143,12 @@ namespace WindowsFormsApplication1
                             }
                             if (flag)
                             {
+                                //need to figure out how to check if there's actually a steamnamesplit[1]
                                 temp.steamname = steamnamesplit[1];
-                                flag = false;
                                 queueGrid.DataSource = blank; // used to fix problem of names not appearing until another action occurs
                                 queueGrid.DataSource = nameList; // rebound to display all info
+                                output.Write("PRIVMSG " + chan + " :@" + uname + " Your steam name has been successfully updated!\r\n");
+                                output.Flush(); //does not work everytime, works 1st instance or if !queue is called but not others. LOW PRIORITY
                             }
                         });
 
@@ -158,11 +165,16 @@ namespace WindowsFormsApplication1
                             if (flag)
                             {
                                 temp.steamname = steamnamesplit[1];
-                                flag = false;
                                 currGrid.DataSource = blank; // used to fix problem of names not appearing until another action occurs
                                 currGrid.DataSource = currentgroup; // rebound to display all info
                             }
                         });
+
+                        if (!flag)
+                        {
+                            output.Write("PRIVMSG " + chan + " :@" + uname + " You can't add your steam name if you're not in the queue!\r\n");
+                            output.Flush(); //does not work everytime, works 1st instance or if !queue is called but not others. LOW PRIORITY
+                        }
                     }
 
                     if (msg.Equals("!queue",StringComparison.Ordinal))
