@@ -144,7 +144,13 @@ namespace WindowsFormsApplication1
                             if (flag)
                             {
                                 //need to figure out how to check if there's actually a steamnamesplit[1]
-                                temp.steamname = steamnamesplit[1];
+                                try
+                                {
+                                    temp.steamname = steamnamesplit[1];
+                                }
+                                catch
+                                {
+                                }
                                 queueGrid.DataSource = blank; // used to fix problem of names not appearing until another action occurs
                                 queueGrid.DataSource = nameList; // rebound to display all info
                                 output.Write("PRIVMSG " + chan + " :@" + uname + " Your steam name has been successfully updated!\r\n");
@@ -164,8 +170,15 @@ namespace WindowsFormsApplication1
                             }
                             if (flag)
                             {
-                                temp.steamname = steamnamesplit[1];
-                                currGrid.DataSource = blank; // used to fix problem of names not appearing until another action occurs
+                                try
+                                {
+                                    temp.steamname = steamnamesplit[1];
+
+                                }
+                                catch (Exception e)
+                                {
+                                }
+                                    currGrid.DataSource = blank; // used to fix problem of names not appearing until another action occurs
                                 currGrid.DataSource = currentgroup; // rebound to display all info
                             }
                         });
