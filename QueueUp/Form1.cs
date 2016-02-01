@@ -253,7 +253,7 @@ namespace WindowsFormsApplication1
         private void button2_Click(object sender, EventArgs e)
         {
             bool flag = false;
-            int temp = groupcount;
+            int temp = 0;
             currGrid.Invoke((Action)delegate
             {
                 if (groupcount >= groupmax)
@@ -272,14 +272,14 @@ namespace WindowsFormsApplication1
                     if (groupmax == 0) break;
                     currentgroup.Add(u);
                     groupcount++;
-
+                    temp++;
                     if (groupcount >= groupmax)
                     {
                         break;
                     }
-                }
-              
-                    for (int i = 0; i < groupcount; i++)
+               }
+               
+                    for (int i = 0; i < temp; i++)
                     {
                         if(count == 0) break;
                         nameList.RemoveAt(0);
