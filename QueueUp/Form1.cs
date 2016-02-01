@@ -250,7 +250,7 @@ namespace WindowsFormsApplication1
         }
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //need an empty group function
         {
             bool flag = false;
             int temp = 0;
@@ -279,12 +279,12 @@ namespace WindowsFormsApplication1
                     }
                }
                
-                    for (int i = 0; i < temp; i++)
-                    {
-                        if(count == 0) break;
-                        nameList.RemoveAt(0);
-                        count--;
-                    }
+               for (int i = 0; i < temp; i++)
+               {
+                   if(count == 0) break;
+                   nameList.RemoveAt(0);
+                   count--;
+               }
 
             });
 
@@ -417,6 +417,11 @@ namespace WindowsFormsApplication1
 
                 currGrid.DataSource = currentgroup;
             });
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            currentgroup = new BindingList<User>();
         }
     }
 }
