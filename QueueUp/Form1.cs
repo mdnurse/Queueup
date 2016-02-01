@@ -188,6 +188,14 @@ namespace WindowsFormsApplication1
                         output.Flush();
                     }
 
+                    if (msg.Equals("!qhelp", StringComparison.Ordinal))
+                    {
+                                output.Write("PRIVMSG " + chan + " :@" + uname + " Command List: !join to join the queue, !leave to leave the queue, !steam 'steamname' to add your steam name, !queue to list the current queue of players\r\n");
+                                output.Flush(); //does not work everytime, works 1st instance or if !queue is called but not others. LOW PRIORITY
+
+                    } // actually functioning now
+
+
                     textBox2.Invoke((Action)delegate //puts the chat into the ircbox
                     {
 
