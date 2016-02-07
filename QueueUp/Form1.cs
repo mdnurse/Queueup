@@ -222,11 +222,11 @@ namespace WindowsFormsApplication1
                         textBox2.AcceptsReturn = true;
                     });
 
-                    this.Invoke((Action)delegate
+                    /*this.Invoke((Action)delegate
                     {
                         this.TopMost = true;
 
-                    });
+                    });*/
 
                 }
 
@@ -294,6 +294,14 @@ namespace WindowsFormsApplication1
                     currGrid.DataSource = currentgroup;
                 
             });
+            /*string groupAnnounce ="";         This is the logic for sending a message for next group, need to figure out how to send it to IRC thread
+            foreach(User u in currentgroup)
+            {
+                groupAnnounce += " @" + u.twitchname + ",";
+            }
+           
+            //output.Write("PRIVMSG " + chan + " :CURRENT GROUP: " + groupAnnounce + "\r\n");
+            //output.Flush();*/
         }
 
 
