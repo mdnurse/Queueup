@@ -429,7 +429,12 @@ namespace WindowsFormsApplication1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            currentgroup = new BindingList<User>();
+            currGrid.Invoke((Action)delegate
+            {
+                currentgroup = new BindingList<User>();
+                currGrid.DataSource = currentgroup;
+                groupcount = 0;
+            });
         }
     }
 }
