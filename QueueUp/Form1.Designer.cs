@@ -53,6 +53,8 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.queueGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamSizeNumeric)).BeginInit();
@@ -88,7 +90,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(676, 37);
+            this.label1.Location = new System.Drawing.Point(674, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 7;
@@ -296,11 +298,33 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(215, 516);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(81, 23);
+            this.button7.TabIndex = 24;
+            this.button7.Text = "Move Up";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(215, 545);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(81, 23);
+            this.button8.TabIndex = 25;
+            this.button8.Text = "Move Down";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(805, 645);
+            this.ClientSize = new System.Drawing.Size(801, 645);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -358,6 +382,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
     }
 }
 

@@ -436,5 +436,54 @@ namespace WindowsFormsApplication1
                 groupcount = 0;
             });
         }
+
+        private void button7_Click(object sender, EventArgs e) //move up button
+        {
+            int swapindex;
+            bool flag = false;
+            User temp;
+            queueGrid.Invoke((Action)delegate
+            {
+                if (count > 0)
+                {
+                    swapindex = queueGrid.CurrentCell.RowIndex;
+                    if (swapindex == 0) flag = true;
+                    
+                    if (!flag)
+                    {
+                        temp = nameList[swapindex];
+                        nameList[swapindex] = nameList[swapindex - 1];
+                        nameList[swapindex - 1] = temp;
+                    }
+                    queueGrid.DataSource = blank; // used to fix problem of names not appearing until another action occurs
+                    queueGrid.DataSource = nameList; // rebound to display all info
+                }
+            });
+        }
+
+        private void button8_Click(object sender, EventArgs e) //bring it on down
+        {
+            int swapindex;
+            bool flag = false;
+            User temp;
+            queueGrid.Invoke((Action)delegate
+            {
+                if (count > 0)
+                {
+                    swapindex = queueGrid.CurrentCell.RowIndex;
+                    if (swapindex == count-1) flag = true;
+
+                    if (!flag)
+                    {
+                        temp = nameList[swapindex];
+                        nameList[swapindex] = nameList[swapindex + 1];
+                        nameList[swapindex + 1] = temp;
+                    }
+
+                    queueGrid.DataSource = blank; // used to fix problem of names not appearing until another action occurs
+                    queueGrid.DataSource = nameList; // rebound to display all info
+                }
+            });
+        }
     }
 }
