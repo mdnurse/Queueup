@@ -66,6 +66,7 @@ namespace WindowsFormsApplication1
             //Process each line received from irc server
             for (buf = input.ReadLine(); ; buf = input.ReadLine())
             {
+
                 if (buf.Contains("PRIVMSG"))
                 {
                     string[] split = buf.Split(new Char[] { ':' });   //all the shit for cutting up the raw IRC string into easily readable text
@@ -100,9 +101,9 @@ namespace WindowsFormsApplication1
                                 output.Write("PRIVMSG " + chan + " :@" + uname + " Has successfully joined the queue!\r\n");
                                 output.Flush(); //does not work everytime, works 1st instance or if !queue is called but not others. LOW PRIORITY
                             }
-                            flag = false;
+                            
                         });
-                       
+                        flag = false;
                     }
 
                     if (msg.Equals("!leave", StringComparison.Ordinal))
