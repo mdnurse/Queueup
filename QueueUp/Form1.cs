@@ -76,6 +76,7 @@ namespace WindowsFormsApplication1
                     
                     if (msg.Equals("!join", StringComparison.Ordinal))
                     {
+                        flag = false;
                         queueGrid.Invoke((Action)delegate
                         {
                             foreach (User u in nameList) //checking if user is already queued.
@@ -106,8 +107,10 @@ namespace WindowsFormsApplication1
 
                     if (msg.Equals("!leave", StringComparison.Ordinal))
                     {
+                        flag = false;
                         queueGrid.Invoke((Action)delegate
                         {
+                            
                             foreach (User u in nameList)
                             {
                                 if (u.twitchname.Equals(uname, StringComparison.Ordinal))
@@ -156,10 +159,12 @@ namespace WindowsFormsApplication1
                                 output.Write("PRIVMSG " + chan + " :@" + uname + " Your steam name has been successfully updated!\r\n");
                                 output.Flush(); //does not work everytime, works 1st instance or if !queue is called but not others. LOW PRIORITY
                             }
+                            flag = false;
                         });
 
                         currGrid.Invoke((Action)delegate
                         {
+                            flag = false;
                             foreach (User u in currentgroup)
                             {
                                 if (u.twitchname.Equals(uname, StringComparison.Ordinal))
@@ -252,7 +257,7 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e) //need an empty group function
         {
-            bool flag = false;
+
             int temp = 0;
             currGrid.Invoke((Action)delegate
             {
@@ -260,8 +265,6 @@ namespace WindowsFormsApplication1
                 {
                     currentgroup = new BindingList<User>();
                     groupcount = 0;
-                    flag = true;
-                   
                 }
             });
             
@@ -440,16 +443,16 @@ namespace WindowsFormsApplication1
         private void button7_Click(object sender, EventArgs e) //move up button
         {
             int swapindex;
-            bool flag = false;
+            bool flag2 = false;
             User temp;
             queueGrid.Invoke((Action)delegate
             {
                 if (count > 0)
                 {
                     swapindex = queueGrid.CurrentCell.RowIndex;
-                    if (swapindex == 0) flag = true;
+                    if (swapindex == 0) flag2 = true;
                     
-                    if (!flag)
+                    if (!flag2)
                     {
                         temp = nameList[swapindex];
                         nameList[swapindex] = nameList[swapindex - 1];
@@ -464,16 +467,16 @@ namespace WindowsFormsApplication1
         private void button8_Click(object sender, EventArgs e) //bring it on down
         {
             int swapindex;
-            bool flag = false;
+            bool flag3 = false;
             User temp;
             queueGrid.Invoke((Action)delegate
             {
                 if (count > 0)
                 {
                     swapindex = queueGrid.CurrentCell.RowIndex;
-                    if (swapindex == count-1) flag = true;
+                    if (swapindex == count-1) flag3 = true;
 
-                    if (!flag)
+                    if (!flag3)
                     {
                         temp = nameList[swapindex];
                         nameList[swapindex] = nameList[swapindex + 1];
