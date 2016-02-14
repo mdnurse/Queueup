@@ -30,7 +30,6 @@ namespace WindowsFormsApplication1
             int port;
             string buf, nick, pw, server, chan, user, uname, msg, queueList;
             bool flag = false;
-            User temp = null;
 
             System.Net.Sockets.TcpClient sock = new System.Net.Sockets.TcpClient();
             System.IO.TextReader input;
@@ -75,22 +74,21 @@ namespace WindowsFormsApplication1
                     uname = unamesplit[0];
                     msg = split[2];
                     
-                    if (msg.Equals("!join", StringComparison.Ordinal))
+                    if (msg.Equals("!join", StringComparison.Ordinal)) //cleaned up
                     {
                         flag = false;
                         queueGrid.Invoke((Action)delegate
                         {
-                            foreach (User u in nameList) //checking if user is already queued.
+                            for (int i = 0; i < count; i++)
                             {
-                                if (u.twitchname.Equals(uname, StringComparison.Ordinal))
+                                if(nameList[i].twitchname.Equals(uname, StringComparison.Ordinal))
                                 {
-                                    temp = u;
-                                    flag = true;
                                     output.Write("PRIVMSG " + chan + " :@" + uname + " You are already in queue\r\n");
                                     output.Flush(); //does not work everytime, works 1st instance or if !queue is called but not others. LOW PRIORITY
+                                    flag = true;
+                                    break;
                                 }
                             }
-
                             if (!flag)
                             {
                                 User newusr = new User();
@@ -101,99 +99,86 @@ namespace WindowsFormsApplication1
                                 output.Write("PRIVMSG " + chan + " :@" + uname + " Has successfully joined the queue!\r\n");
                                 output.Flush(); //does not work everytime, works 1st instance or if !queue is called but not others. LOW PRIORITY
                             }
-                            
                         });
                         flag = false;
+                            
                     }
 
-                    if (msg.Equals("!leave", StringComparison.Ordinal))
+                    if (msg.Equals("!leave", StringComparison.Ordinal)) //cleaned up    
                     {
-                        flag = false;
                         queueGrid.Invoke((Action)delegate
                         {
-                            
-                            foreach (User u in nameList)
+
+                            for (int i = 0; i < count; i++)
                             {
-                                if (u.twitchname.Equals(uname, StringComparison.Ordinal))
+                                if (nameList[i].twitchname.Equals(uname, StringComparison.Ordinal))
                                 {
-                                    temp = u;
-                                    flag = true;                                 
+                                    nameList.RemoveAt(i);
+                                    count--;
+                                    output.Write("PRIVMSG " + chan + " :@" + uname + " You have successfully left the queue!\r\n");
+                                    output.Flush(); //does not work everytime, works 1st instance or if !queue is called but not others. LOW PRIORITY
                                 }
-                            }
-                            if (flag)
-                            {
-                                nameList.Remove(temp);
-                                count--;
-                                flag = false;
-                                output.Write("PRIVMSG " + chan + " :@" + uname + " You have successfully left the queue!\r\n");
-                                output.Flush(); //does not work everytime, works 1st instance or if !queue is called but not others. LOW PRIORITY
                             }
                         });
                     } // actually functioning now
+
 
                     string[] steamnamesplit = msg.Split(new Char[] { ' ' });
                     if (steamnamesplit[0].Equals("!steam", StringComparison.Ordinal))
                     {
                         flag = false;
-                        queueGrid.Invoke((Action)delegate
+                        queueGrid.Invoke((Action)delegate // checks if in the queue
                         {
-                            foreach (User u in nameList)
+                            for (int i = 0; i < count; i++)
                             {
-                                if (u.twitchname.Equals(uname, StringComparison.Ordinal))
+                                if (nameList[i].twitchname.Equals(uname, StringComparison.Ordinal))
                                 {
-                                    temp = u;
+                                    try
+                                    {
+                                        nameList[i].steamname = steamnamesplit[1];
+                                    }
+                                    catch
+                                    {
+                                    }
+                                    queueGrid.DataSource = blank; // used to fix problem of names not appearing until another action occurs
+                                    queueGrid.DataSource = nameList; // rebound to display all info
+                                    output.Write("PRIVMSG " + chan + " :@" + uname + " Your steam name has been successfully updated!\r\n");
+                                    output.Flush(); //does not work everytime, works 1st instance or if !queue is called but not others. LOW PRIORITY
                                     flag = true;
                                 }
                             }
-                            if (flag)
-                            {
-                                //need to figure out how to check if there's actually a steamnamesplit[1]
-                                try
-                                {
-                                    temp.steamname = steamnamesplit[1];
-                                }
-                                catch
-                                {
-                                }
-                                queueGrid.DataSource = blank; // used to fix problem of names not appearing until another action occurs
-                                queueGrid.DataSource = nameList; // rebound to display all info
-                                output.Write("PRIVMSG " + chan + " :@" + uname + " Your steam name has been successfully updated!\r\n");
-                                output.Flush(); //does not work everytime, works 1st instance or if !queue is called but not others. LOW PRIORITY
-                            }
-                            flag = false;
                         });
 
                         currGrid.Invoke((Action)delegate
                         {
-                            flag = false;
-                            foreach (User u in currentgroup)
+                            for (int i = 0; i < groupcount; i++)
                             {
-                                if (u.twitchname.Equals(uname, StringComparison.Ordinal))
+                                if (currentgroup[i].twitchname.Equals(uname, StringComparison.Ordinal))
                                 {
-                                    temp = u;
+                                    try
+                                    {
+                                        currentgroup[i].steamname = steamnamesplit[1];
+                                    }
+                                    catch
+                                    {
+                                    }
+                                    queueGrid.DataSource = blank; // used to fix problem of names not appearing until another action occurs
+                                    queueGrid.DataSource = nameList; // rebound to display all info
+                                    output.Write("PRIVMSG " + chan + " :@" + uname + " Your steam name has been successfully updated!\r\n");
+                                    output.Flush(); //does not work everytime, works 1st instance or if !queue is called but not others. LOW PRIORITY
                                     flag = true;
                                 }
                             }
-                            if (flag)
-                            {
-                                try
-                                {
-                                    temp.steamname = steamnamesplit[1];
-
-                                }
-                                catch (Exception e)
-                                {
-                                }
-                                    currGrid.DataSource = blank; // used to fix problem of names not appearing until another action occurs
-                                currGrid.DataSource = currentgroup; // rebound to display all info
-                            }
                         });
 
+                       
                         if (!flag)
                         {
                             output.Write("PRIVMSG " + chan + " :@" + uname + " You can't add your steam name if you're not in the queue!\r\n");
                             output.Flush(); //does not work everytime, works 1st instance or if !queue is called but not others. LOW PRIORITY
+
                         }
+                        flag = false;
                     }
 
                     if (msg.Equals("!queue",StringComparison.Ordinal))
