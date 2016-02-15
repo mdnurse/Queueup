@@ -336,13 +336,6 @@ namespace WindowsFormsApplication1
 
         }
 
-        public class User // these are the users we will put inside the list
-        {
-            public string twitchname { get; set; }
-            public string steamname { get; set; }
-            public string status { get; set; }
-        }
-
         private void teamSizeNumeric_ValueChanged(object sender, EventArgs e)
         {
             groupmax = (int)teamSizeNumeric.Value;
@@ -473,6 +466,13 @@ namespace WindowsFormsApplication1
                     queueGrid.DataSource = nameList; // rebound to display all info
                 }
             });
+        }
+
+        public class User // these are the users we will put inside the list
+        {
+            public string twitchname { get; set; }
+            public string steamname { get; set; }
+            public string status { get; set; }
         }
     }
 }
